@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int num1, num2;
+	printf("insert number 1: ");
+	scanf("%d", &num1);
+	printf("vedeno chislo %d", num1);
+	printf("\ninsert number 2: ");
+	scanf("%d", &num2);
+	printf("vvedeno chislo %d\n", num2);
+	printf("sum: %d\n", num1+num2);
+	printf("razn: %d\n", num1 - num2);
+	printf("proiz: %d\n", num1 * num2);
+	printf("chast: %d\n", num1 / num2);
+	printf("ostat: %d\n", num1 % num2);
+}
