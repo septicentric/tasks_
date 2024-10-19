@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <limits.h>
 
 #define ROW 9
 #define COL 9
