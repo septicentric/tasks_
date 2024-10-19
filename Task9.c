@@ -1,5 +1,7 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <math.h>
+#include <limits.h>
+
 #define ROW 9
 #define COL 9
 
@@ -25,25 +27,33 @@ void main() {
 		printf("\n");
 	}
 	*/
-	int m = 1; 
+
 	while (1) {
-		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0, a7 = 1, a8, a9 = 0, a10 = 0, a11 = 0, a12 = 0;
+		int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0, a6 = 0, a7 = 1, a8=0, a9 = 0, a10 = 0, a11 = 0, a12 = 0;
 		int a11_1 = 0, a11_2 = 0;
 		int a12_1 = 1, a12_2 = 1;
 		char a;
-		unsigned long int n;
-		printf("Pls, enter the number - ");
-		scanf("%d", &n);
-		printf("%d\n", n);
+		unsigned long long n;
+		printf("Pls, enter the number (smaller than 20 digits) - ");
+		scanf("%llu", &n);
+		printf("%llu\n", n);
 		int j = 0;
-		for (unsigned long int k = n; k > 0; k /= 10) j++;
-
+		unsigned long long k = n;
+		while (k > 0) 
+		{
+			k /= 10; 
+			j++;
+		}
+		printf("%d\n", j);
 		int p;
 		for (int i = 1; i <= j; i++) { //продвижение разряд за разрядом
-			int t = n / pow(10, (j - i));
-			t %= 10;
+			double t_ = pow(10, (j - i));
+			unsigned long long llt = n /(int)t_;
+			llt %= 10;
+			int t = (int)llt;
+			printf("%d) %d\n", i, t);
 			if (t == 3) a1++;
-			if (t == n % 10 && j != i) a2++;
+			if (t == n % 10) a2++;
 			if (t % 2 == 0) a3++;
 			if (t > 5) a4++;
 			if (t % 2 != 0) a5 += t;
@@ -51,7 +61,7 @@ void main() {
 			if (t != 0) a7 *= t;
 			if (j >= 2 && i == 2) a8 = t;
 			if (i == j - 1) a8 *= t;
-			
+
 			if (t % 2 == 0 && (i != j || i != j - 1)) a9 += t;
 			if (i > 1 && t == p) a10++;
 			if (i <= j / 2) a11_1 += t;
@@ -81,7 +91,7 @@ void main() {
 			printf("Sum of left and right halfs aren't similar\n");
 		}
 		printf("Proizv of sum chot and nechot nums - %d\n", a12);
-	
+
 		printf("Do you want to continue? (Yes - y, No - n)\n");
 		scanf("%c", &a);
 
